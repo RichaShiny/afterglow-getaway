@@ -1,8 +1,8 @@
 # Afterglow Getaway
 
-A browser driving game with live gameplay telemetry, a Python API, and SQLite storage.
+A 3D browser driving game with pedestrians, switchable cameras, live gameplay telemetry, a Python API, and SQLite storage.
 
-Explore an original coastal city on foot or in a pink coupe, avoid traffic, and complete a two-stop delivery mission. The current in-game city is called Neon Coast.
+Explore an original 3D coastal city on foot or in a pink coupe, pass animated pedestrians and moving traffic, and complete a two-stop delivery mission. The current in-game city is called Neon Coast.
 
 ## Run locally
 
@@ -21,10 +21,12 @@ Open http://localhost:5174 and choose **Start your night**. Keep the terminal ru
 | Key | Action |
 | --- | --- |
 | W / S or Up / Down | Walk, accelerate, or reverse |
-| A / D or Left / Right | Walk sideways or steer the car |
+| A / D or Left / Right | Turn the character or steer the car |
 | E | Enter or exit the car nearby |
 | Space | Brake |
 | P | Pause or resume |
+| C or Camera button | Cycle chase, street, and overhead cameras |
+| Drag the scene | Orbit the camera |
 
 Steering responds at a standstill. Hold W+A or W+D to drive through a turn. Slow down inside each golden mission marker.
 
@@ -42,12 +44,16 @@ Refreshing starts a new session; saved history remains in SQLite. Unsent browser
 
 ```text
 dist/index.html     Game interface and HUD
-dist/game.js        Canvas rendering, gameplay, and event generation
+dist/game.js        Gameplay, HUD, minimap, and event generation
+dist/world3d.js     Three.js city, pedestrians, cars, and cameras
+dist/vendor/        Bundled Three.js renderer and MIT license
 dist/telemetry.js   Upload queue, connection status, and live feed
 server.py           Local HTTP API, static server, and SQLite persistence
 ```
 
-This is a single-player 2D prototype. The Python server binds to loopback for local development; it does not provide production authentication or multiplayer. GitHub Pages alone can serve the visuals but cannot run the Python API or SQLite backend.
+Requires a browser with WebGL support. Three.js is bundled locally; see `dist/vendor/THREE-LICENSE.txt`. Pedestrians follow scripted sidewalk and crossing routes; traffic yields to nearby crossing pedestrians.
+
+This is a single-player 3D prototype. The Python server binds to loopback for local development; it does not provide production authentication or multiplayer. GitHub Pages alone can serve the visuals but cannot run the Python API or SQLite backend.
 
 ## Spark and ML log pipeline
 
