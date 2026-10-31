@@ -48,3 +48,7 @@ server.py           Local HTTP API, static server, and SQLite persistence
 ```
 
 This is a single-player 2D prototype. The Python server binds to loopback for local development; it does not provide production authentication or multiplayer. GitHub Pages alone can serve the visuals but cannot run the Python API or SQLite backend.
+
+## Spark and ML log pipeline
+
+See [pipeline/README.md](pipeline/README.md) for real gameplay export, a labeled synthetic scale-test generator, Spark feature engineering, Parquet output, Spark ML anomaly scoring, and HDFS/YARN execution examples. Install the optional `requirements-ml.txt` dependencies only for this pipeline. A Java runtime is required. Full Spark execution has not yet been verified in the authoring environment.

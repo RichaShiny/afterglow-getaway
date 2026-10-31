@@ -2,3 +2,6 @@ runtime/
 __pycache__/
 .DS_Store
 .openai/
+data/
+artifacts/
+.venv/
